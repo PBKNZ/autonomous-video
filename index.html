@@ -866,10 +866,15 @@
       <h2 class="section-title reveal">Let's start a <em>conversation.</em></h2>
       <p class="section-body reveal reveal-delay-1">Tell us about your project, campaign or agency partnership need. We'll come back within 24 hours with a clear path forward.</p>
       <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
-        <div class="form-group"><label for="fname">Your Name</label><input type="text" id="fname" placeholder="Full name" required /></div>
-        <div class="form-group"><label for="company">Company / Agency</label><input type="text" id="company" placeholder="Company or agency" /></div>
-        <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="your@email.com" required /></div>
-        <div class="form-group"><label for="type">What do you need?</label><select id="type">
+        <input type="hidden" name="access_key" value="2d60ef7e-effa-4acc-880d-4245c1983f76" />
+        <input type="hidden" name="subject" value="New enquiry from autonomous.video" />
+        <input type="hidden" name="from_name" value="Autonomous Website" />
+        <input type="hidden" name="cc" value="pat@autonomous.video" />
+        <input type="checkbox" name="botcheck" style="display:none;" />
+        <div class="form-group"><label for="fname">Your Name</label><input type="text" id="fname" name="Name" placeholder="Full name" required /></div>
+        <div class="form-group"><label for="company">Company / Agency</label><input type="text" id="company" name="Company" placeholder="Company or agency" /></div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="Email" placeholder="your@email.com" required /></div>
+        <div class="form-group"><label for="type">What do you need?</label><select id="type" name="What they need">
           <option value="">Select option</option>
           <option>Agency Production Partner</option>
           <option>Post-Production Support</option>
@@ -881,9 +886,10 @@
           <option>Retainer / Ongoing Content</option>
           <option>Other</option>
         </select></div>
-        <div class="form-group full"><label for="brief">Brief</label><textarea id="brief" placeholder="Tell us about your project, timeline, deliverables and any context we should know..." required></textarea></div>
+        <div class="form-group full"><label for="brief">Brief</label><textarea id="brief" name="Brief" placeholder="Tell us about your project, timeline, deliverables and any context we should know..." required></textarea></div>
         <div class="form-submit"><button type="submit" class="btn-primary" style="cursor:none;">Start the Conversation</button></div>
       </form>
+      <div id="formError" style="display:none;padding:22px;border:1px solid rgba(224,64,251,.35);color:var(--neon-pink);font-size:13px;letter-spacing:.1em;margin-top:16px;">Something went wrong sending your message. Please email us directly at anton@autonomous.video.</div>
       <div id="formSuccess" style="display:none;padding:22px;border:1px solid rgba(45,212,240,.25);color:var(--neon-blue);font-size:13px;letter-spacing:.1em;margin-top:16px;">Brief received. We'll be in touch within 24 hours.</div>
       <p class="contact-email reveal">Or reach out directly</p>
       <div class="contact-people reveal">
@@ -961,7 +967,32 @@
       });
     }
 
-    function handleSubmit(e){ e.preventDefault(); document.querySelector('.contact-form').style.display='none'; document.getElementById('formSuccess').style.display='block'; }
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      const data = new FormData(form);
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+        .then(r => r.json())
+        .then(result => {
+          if (result.success) {
+            document.querySelector('.contact-form').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+          } else {
+            document.getElementById('formError').style.display = 'block';
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }
+        })
+        .catch(() => {
+          document.getElementById('formError').style.display = 'block';
+          btn.textContent = originalText;
+          btn.disabled = false;
+        });
+    }
 
     // Work scroller
     const workScroll = document.getElementById('workScroll');

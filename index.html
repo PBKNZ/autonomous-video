@@ -202,22 +202,12 @@
     .reel-frame { width: 100%; margin: 0; }
     .reel-placeholder {
       width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      aspect-ratio: 16 / 9;
-      background: #000;
+      aspect-ratio: 2.35 / 1;
+      background: var(--dark);
       border: none;
       border-top: 1px solid var(--border);
-      display: block;
-      position: relative; overflow: hidden;
-    }
-    /* Show the WHOLE video, no cropping — entire frame and scrubber visible */
-    .reel-placeholder iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; cursor: none;
     }
     .reel-placeholder::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(124,92,252,0.07) 0%, transparent 70%); }
     .reel-inner { display: flex; flex-direction: column; align-items: center; gap: 18px; position: relative; z-index: 1; transition: opacity .4s ease; }
@@ -358,13 +348,13 @@
       background: var(--dark); border: 1px solid var(--border);
       border-radius: 18px 0 0 0;
     }
-    .work-thumb {
+    .work-video {
       position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; display: block;
       transition: transform .6s ease, opacity .4s ease;
       opacity: 0.85;
     }
-    .work-item:hover .work-thumb { transform: scale(1.04); opacity: 1; }
+    .work-item:hover .work-video { transform: scale(1.04); opacity: 1; }
     .work-item-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(7,7,10,0.95) 0%, rgba(7,7,10,0.4) 35%, transparent 70%);
@@ -414,8 +404,7 @@
     }
     .video-modal.open { display: flex; opacity: 1; }
     .video-modal-inner { position: relative; width: 100%; max-width: 1200px; }
-    .video-modal-frame { position: relative; width: 100%; padding-top: 56.25%; }
-    .video-modal-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-modal video { width: 100%; height: auto; display: block; max-height: 85vh; }
     .video-modal-close {
       position: absolute; top: -50px; right: 0;
       width: 38px; height: 38px;
@@ -480,7 +469,7 @@
       .hamburger { display: flex; }
       section { padding: 80px 24px; }
       .showreel { padding: 0; }
-      .reel-placeholder { aspect-ratio: 16 / 9; height: auto; }
+      .reel-placeholder { aspect-ratio: 16 / 9; }
       .reel-caption { padding: 16px 24px 48px; }
       footer { padding: 30px 24px; flex-direction: column; gap: 20px; text-align: center; }
       .footer-links { justify-content: center; }
@@ -565,16 +554,140 @@
 
   <div class="showreel" id="showreel">
     <div class="reel-frame">
-      <div class="reel-placeholder">
-        <iframe src="https://player.vimeo.com/video/1194653714?badge=0&byline=0&title=0&portrait=0&controls=1&autopause=0&player_id=0&app_id=58479&endscreen=0&pip=0&dnt=1"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          title="Autonomous showreel 2026"></iframe>
+      <div class="reel-placeholder" style="cursor:pointer;">
+        <img src="showreel front page.png" alt="" id="showreelPoster" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;transition:opacity .4s ease;" />
+        <video
+          id="showreelVideo"
+          src="Autonomous showreel 2026 v03 small.mp4"
+          playsinline
+          preload="auto"
+          poster="showreel front page.png"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:1;opacity:0;transition:opacity .4s ease;"
+        ></video>
+        <div class="reel-inner" id="reelOverlay" style="position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .4s ease;background:linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.45));">
+          <div class="play-btn" id="playBtn">
+            <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+              <path d="M1 1L17 10L1 19V1Z" stroke="#2dd4f0" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <span class="reel-label">Watch Showreel</span>
+        </div>
       </div>
       <p class="reel-caption">2026 &mdash; <span>Selected Work</span></p>
     </div>
   </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-image reveal">
+        <div class="about-img-frame">
+          <img src="patrick_anton.png" alt="Patrick and Anton" style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:contrast(1.05);" />
+        </div>
+        <div class="about-accent-box"></div>
+      </div>
+      <div class="about-content">
+        <p class="section-label reveal">About</p>
+        <h2 class="section-title reveal">Two creatives.<br><em>30+ years</em> in the industry.</h2>
+        <p class="section-body reveal reveal-delay-1">Patrick and Anton have spent three decades on the front line of production. Feature films, global ad campaigns, and everything in between. International brands, major agencies, and every kind of content brief imaginable.</p>
+        <div class="about-stats reveal reveal-delay-2">
+          <div class="stat"><div class="stat-val c1">30+</div><div class="stat-label">Years experience</div></div>
+          <div class="stat"><div class="stat-val c2">Global</div><div class="stat-label">Client portfolio</div></div>
+          <div class="stat"><div class="stat-val c3">Full</div><div class="stat-label">Service studio</div></div>
+        </div>
+        <p class="section-body reveal reveal-delay-3">We started Autonomous to make proper production accessible. You get the craft of a major studio at a scale that makes sense for your budget and timeline.</p>
+        <br><br>
+        <a href="#contact" class="btn-primary reveal reveal-delay-4">Work With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST WORK -->
+  <section class="work" id="work">
+    <div class="work-inner">
+      <div class="work-header">
+        <div class="reveal"><p class="section-label">Latest Work</p><h2 class="section-title">Selected<br><em>projects.</em></h2></div>
+        <div class="work-nav reveal">
+          <button class="work-nav-btn" id="workPrev" aria-label="Previous">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L4 8l6 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="work-nav-btn" id="workNext" aria-label="Next">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l6 5-6 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-scroll-wrap reveal">
+      <div class="work-scroll" id="workScroll">
+
+        <div class="work-item" data-video="Pure Blonde.mp4">
+          <video class="work-video" src="Pure Blonde.mp4" muted playsinline preload="metadata"></video>
+          <div class="work-item-overlay"></div>
+          <div class="work-play-badge">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
+          </div>
+          <div class="work-item-info">
+            <div class="work-item-type">Brand Campaign</div>
+            <div class="work-item-title">Pure Blonde</div>
+          </div>
+        </div>
+
+        <div class="work-item" data-video="Essential Talent.mp4">
+          <video class="work-video" src="Essential Talent.mp4" muted playsinline preload="metadata"></video>
+          <div class="work-item-overlay"></div>
+          <div class="work-play-badge">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
+          </div>
+          <div class="work-item-info">
+            <div class="work-item-type">Brand Film</div>
+            <div class="work-item-title">Essential Talent</div>
+          </div>
+        </div>
+
+        <div class="work-item" data-video="Catch_Cardi.mp4">
+          <video class="work-video" src="Catch_Cardi.mp4" muted playsinline preload="metadata"></video>
+          <div class="work-item-overlay"></div>
+          <div class="work-play-badge">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
+          </div>
+          <div class="work-item-info">
+            <div class="work-item-type">Social Campaign</div>
+            <div class="work-item-title">Catch Cardi</div>
+          </div>
+        </div>
+
+        <div class="work-item" data-video="Evair.mp4">
+          <video class="work-video" src="Evair.mp4" muted playsinline preload="metadata"></video>
+          <div class="work-item-overlay"></div>
+          <div class="work-play-badge">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
+          </div>
+          <div class="work-item-info">
+            <div class="work-item-type">Product Film</div>
+            <div class="work-item-title">Evair</div>
+          </div>
+        </div>
+
+        <div class="work-item" data-video="Sora.mp4">
+          <video class="work-video" src="Sora.mp4" muted playsinline preload="metadata"></video>
+          <div class="work-item-overlay"></div>
+          <div class="work-play-badge">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
+          </div>
+          <div class="work-item-info">
+            <div class="work-item-type">Motion &amp; Post</div>
+            <div class="work-item-title">Sora</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="work-inner" style="margin-top:32px;">
+      <a href="#contact" class="btn-ghost reveal">Let's Start a Conversation</a>
+    </div>
+  </section>
 
   <!-- BRAND EXPERIENCE -->
   <section class="brands" id="brands">
@@ -609,7 +722,7 @@
           <div class="logo-cell"><img src="logos/startrek.png" alt="Star Trek" /></div>
           <div class="logo-cell"><img src="logos/manutd.png" alt="Manchester United" /></div>
           <div class="logo-cell"><img src="logos/uber.png" alt="Uber" /></div>
-          <div class="logo-cell"><img src="logos/McLaren.png" alt="McLaren" /></div>
+          <div class="logo-cell"><img src="logos/mclaren.png" alt="McLaren" /></div>
           <div class="logo-cell"><img src="logos/hugoboss.png" alt="Hugo Boss" /></div>
           <div class="logo-cell"><img src="logos/landrover.png" alt="Land Rover" /></div>
         </div>
@@ -718,145 +831,13 @@
     </div>
   </section>
 
-  <section class="process" id="process">
-    <div class="process-inner">
-      <div class="process-header">
-        <div class="reveal">
-          <p class="section-label">How We Work</p>
-          <h2 class="section-title">Simple process.<br><em>Exceptional output.</em></h2>
-        </div>
-        <p class="section-body reveal reveal-delay-2">We've stripped production down to what matters. Clear steps, no surprises. You focus on your business. We focus on making it look remarkable on screen.</p>
-      </div>
-      <div class="process-steps">
-        <div class="step reveal reveal-delay-1"><div class="step-dot"></div><div class="step-num">01 &mdash; Brief</div><div class="step-title">Discovery</div><div class="step-desc">We learn your brand, your audience, and what success looks like for this project.</div></div>
-        <div class="step reveal reveal-delay-2"><div class="step-dot"></div><div class="step-num">02 &mdash; Pre</div><div class="step-title">Development</div><div class="step-desc">Scripts, storyboards, shot lists. Everything locked before production begins.</div></div>
-        <div class="step reveal reveal-delay-3"><div class="step-dot"></div><div class="step-num">03 &mdash; Shoot</div><div class="step-title">Production</div><div class="step-desc">We shoot with precision. Your vision executed by people who have done this for decades.</div></div>
-        <div class="step reveal reveal-delay-4"><div class="step-dot"></div><div class="step-num">04 &mdash; Post</div><div class="step-title">Delivery</div><div class="step-desc">Edit, grade, sound, and final delivery. Ready to publish, broadcast, or present.</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about" id="about">
-    <div class="about-inner">
-      <div class="about-image reveal">
-        <div class="about-img-frame">
-          <img src="patrick_anton.png" alt="Patrick and Anton" style="width:100%;height:100%;object-fit:cover;object-position:center top;filter:contrast(1.05);" />
-        </div>
-        <div class="about-accent-box"></div>
-      </div>
-      <div class="about-content">
-        <p class="section-label reveal">About</p>
-        <h2 class="section-title reveal">Two creatives.<br><em>30+ years</em> in the industry.</h2>
-        <p class="section-body reveal reveal-delay-1">Patrick and Anton have spent three decades on the front line of production. Feature films, global ad campaigns, and everything in between. International brands, major agencies, and every kind of content brief imaginable.</p>
-        <div class="about-stats reveal reveal-delay-2">
-          <div class="stat"><div class="stat-val c1">30+</div><div class="stat-label">Years experience</div></div>
-          <div class="stat"><div class="stat-val c2">Global</div><div class="stat-label">Client portfolio</div></div>
-          <div class="stat"><div class="stat-val c3">Full</div><div class="stat-label">Service studio</div></div>
-        </div>
-        <p class="section-body reveal reveal-delay-3">We started Autonomous to make proper production accessible. You get the craft of a major studio at a scale that makes sense for your budget and timeline.</p>
-        <br><br>
-        <a href="#contact" class="btn-primary reveal reveal-delay-4">Work With Us</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="work" id="work">
-    <div class="work-inner">
-      <div class="work-header">
-        <div class="reveal"><p class="section-label">Latest Work</p><h2 class="section-title">Selected<br><em>projects.</em></h2></div>
-        <div class="work-nav reveal">
-          <button class="work-nav-btn" id="workPrev" aria-label="Previous">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L4 8l6 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="work-nav-btn" id="workNext" aria-label="Next">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l6 5-6 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="work-scroll-wrap reveal">
-      <div class="work-scroll" id="workScroll">
-
-        <div class="work-item" data-vimeo="1194653768">
-          <img class="work-thumb" src="https://vumbnail.com/1194653768.jpg" alt="Pure Blonde" />
-          <div class="work-item-overlay"></div>
-          <div class="work-play-badge">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
-          </div>
-          <div class="work-item-info">
-            <div class="work-item-type">Brand Campaign</div>
-            <div class="work-item-title">Pure Blonde</div>
-          </div>
-        </div>
-
-        <div class="work-item" data-vimeo="1194653717">
-          <img class="work-thumb" src="https://vumbnail.com/1194653717.jpg" alt="Essential Talent" />
-          <div class="work-item-overlay"></div>
-          <div class="work-play-badge">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
-          </div>
-          <div class="work-item-info">
-            <div class="work-item-type">Brand Film</div>
-            <div class="work-item-title">Essential Talent</div>
-          </div>
-        </div>
-
-        <div class="work-item" data-vimeo="1194653715">
-          <img class="work-thumb" src="https://vumbnail.com/1194653715.jpg" alt="Catch Cardi" />
-          <div class="work-item-overlay"></div>
-          <div class="work-play-badge">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
-          </div>
-          <div class="work-item-info">
-            <div class="work-item-type">Social Campaign</div>
-            <div class="work-item-title">Catch Cardi</div>
-          </div>
-        </div>
-
-        <div class="work-item" data-vimeo="1194653716">
-          <img class="work-thumb" src="https://vumbnail.com/1194653716.jpg" alt="Evair" />
-          <div class="work-item-overlay"></div>
-          <div class="work-play-badge">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
-          </div>
-          <div class="work-item-info">
-            <div class="work-item-type">Product Film</div>
-            <div class="work-item-title">Evair</div>
-          </div>
-        </div>
-
-        <div class="work-item" data-vimeo="1194653788">
-          <img class="work-thumb" src="https://vumbnail.com/1194653788.jpg" alt="Sora" />
-          <div class="work-item-overlay"></div>
-          <div class="work-play-badge">
-            <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
-          </div>
-          <div class="work-item-info">
-            <div class="work-item-type">Motion &amp; Post</div>
-            <div class="work-item-title">Sora</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="work-inner" style="margin-top:32px;">
-      <a href="#contact" class="btn-ghost reveal">Let's Start a Conversation</a>
-    </div>
-  </section>
-
   <!-- VIDEO MODAL -->
   <div class="video-modal" id="videoModal">
     <div class="video-modal-inner">
       <button class="video-modal-close" id="videoModalClose" aria-label="Close">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l10 10M12 2L2 12" stroke-linecap="round"/></svg>
       </button>
-      <div class="video-modal-frame">
-        <iframe id="modalIframe" src="" frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
+      <video id="modalVideo" controls playsinline></video>
     </div>
   </div>
 
@@ -866,15 +847,10 @@
       <h2 class="section-title reveal">Let's start a <em>conversation.</em></h2>
       <p class="section-body reveal reveal-delay-1">Tell us about your project, campaign or agency partnership need. We'll come back within 24 hours with a clear path forward.</p>
       <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
-        <input type="hidden" name="access_key" value="2d60ef7e-effa-4acc-880d-4245c1983f76" />
-        <input type="hidden" name="subject" value="New enquiry from autonomous.video" />
-        <input type="hidden" name="from_name" value="Autonomous Website" />
-        <input type="hidden" name="cc" value="pat@autonomous.video" />
-        <input type="checkbox" name="botcheck" style="display:none;" />
-        <div class="form-group"><label for="fname">Your Name</label><input type="text" id="fname" name="Name" placeholder="Full name" required /></div>
-        <div class="form-group"><label for="company">Company / Agency</label><input type="text" id="company" name="Company" placeholder="Company or agency" /></div>
-        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="Email" placeholder="your@email.com" required /></div>
-        <div class="form-group"><label for="type">What do you need?</label><select id="type" name="What they need">
+        <div class="form-group"><label for="fname">Your Name</label><input type="text" id="fname" placeholder="Full name" required /></div>
+        <div class="form-group"><label for="company">Company / Agency</label><input type="text" id="company" placeholder="Company or agency" /></div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="your@email.com" required /></div>
+        <div class="form-group"><label for="type">What do you need?</label><select id="type">
           <option value="">Select option</option>
           <option>Agency Production Partner</option>
           <option>Post-Production Support</option>
@@ -886,10 +862,9 @@
           <option>Retainer / Ongoing Content</option>
           <option>Other</option>
         </select></div>
-        <div class="form-group full"><label for="brief">Brief</label><textarea id="brief" name="Brief" placeholder="Tell us about your project, timeline, deliverables and any context we should know..." required></textarea></div>
+        <div class="form-group full"><label for="brief">Brief</label><textarea id="brief" placeholder="Tell us about your project, timeline, deliverables and any context we should know..." required></textarea></div>
         <div class="form-submit"><button type="submit" class="btn-primary" style="cursor:none;">Start the Conversation</button></div>
       </form>
-      <div id="formError" style="display:none;padding:22px;border:1px solid rgba(224,64,251,.35);color:var(--neon-pink);font-size:13px;letter-spacing:.1em;margin-top:16px;">Something went wrong sending your message. Please email us directly at anton@autonomous.video.</div>
       <div id="formSuccess" style="display:none;padding:22px;border:1px solid rgba(45,212,240,.25);color:var(--neon-blue);font-size:13px;letter-spacing:.1em;margin-top:16px;">Brief received. We'll be in touch within 24 hours.</div>
       <p class="contact-email reveal">Or reach out directly</p>
       <div class="contact-people reveal">
@@ -918,7 +893,7 @@
 
   <footer>
     <div class="footer-logo"><img src="logo.png" alt="Autonomous" /></div>
-    <p class="footer-copy">&copy; 2026 Autonomous Video Production</p>
+    <p class="footer-copy">&copy; 2025 Autonomous Video Production</p>
     <ul class="footer-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
@@ -951,6 +926,8 @@
         const rect = heroEl.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
+        const px = e.clientX - rect.left;
+        const py = e.clientY - rect.top;
 
         // Spotlight position (% based)
         spotlight.style.setProperty('--mx', x + '%');
@@ -961,38 +938,14 @@
         magnifier.style.setProperty('--my', y + '%');
 
         // Pan the zoomed background so cursor stays at the magnified point
+        // Background is 115% sized, so we shift it slightly toward cursor for that "magnify" feel
         const shiftX = (50 - x) * 0.12; // small parallax shift
         const shiftY = (50 - y) * 0.12;
         magnifier.style.backgroundPosition = `calc(50% + ${shiftX}%) calc(50% + ${shiftY}%)`;
       });
     }
 
-    function handleSubmit(e){
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.textContent;
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-      const data = new FormData(form);
-      fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
-        .then(r => r.json())
-        .then(result => {
-          if (result.success) {
-            document.querySelector('.contact-form').style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'block';
-          } else {
-            document.getElementById('formError').style.display = 'block';
-            btn.textContent = originalText;
-            btn.disabled = false;
-          }
-        })
-        .catch(() => {
-          document.getElementById('formError').style.display = 'block';
-          btn.textContent = originalText;
-          btn.disabled = false;
-        });
-    }
+    function handleSubmit(e){ e.preventDefault(); document.querySelector('.contact-form').style.display='none'; document.getElementById('formSuccess').style.display='block'; }
 
     // Work scroller
     const workScroll = document.getElementById('workScroll');
@@ -1007,28 +960,59 @@
     workPrev?.addEventListener('click', () => scrollWorkBy(-1));
     workNext?.addEventListener('click', () => scrollWorkBy(1));
 
-    // Modal elements
-    const modal = document.getElementById('videoModal');
-    const modalIframe = document.getElementById('modalIframe');
-
-    // Click a work tile to open its Vimeo video in the modal
+    // Hover-preview videos (autoplay muted on hover)
     document.querySelectorAll('.work-item').forEach(item => {
+      const vid = item.querySelector('.work-video');
+      if (!vid) return;
+      item.addEventListener('mouseenter', () => { vid.play().catch(()=>{}); });
+      item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
+      // Click to open in modal
       item.addEventListener('click', () => {
-        const id = item.getAttribute('data-vimeo');
-        if (!id) return;
-        modalIframe.src = 'https://player.vimeo.com/video/' + id + '?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479';
+        const src = item.getAttribute('data-video');
+        if (!src) return;
+        const modal = document.getElementById('videoModal');
+        const modalVid = document.getElementById('modalVideo');
+        modalVid.src = src;
         modal.classList.add('open');
+        modalVid.play().catch(()=>{});
       });
     });
 
     // Modal close
+    const modal = document.getElementById('videoModal');
+    const modalVid = document.getElementById('modalVideo');
     function closeModal() {
-      modalIframe.src = '';
+      modalVid.pause();
+      modalVid.src = '';
       modal.classList.remove('open');
     }
     document.getElementById('videoModalClose')?.addEventListener('click', closeModal);
     modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    // Showreel video
+    const vid = document.getElementById('showreelVideo');
+    const overlay = document.getElementById('reelOverlay');
+    const poster = document.getElementById('showreelPoster');
+    if (vid && overlay) {
+      overlay.addEventListener('click', () => {
+        vid.style.opacity = '1';
+        if (poster) poster.style.opacity = '0';
+        vid.play();
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+      });
+      vid.addEventListener('click', () => {
+        if (!vid.paused) {
+          vid.pause();
+          overlay.style.opacity = '1';
+          overlay.style.pointerEvents = 'auto';
+        }
+      });
+      vid.addEventListener('ended', () => {
+        overlay.style.opacity = '1';
+        overlay.style.pointerEvents = 'auto';
+      });
+    }
   </script>
 </body>
 </html>

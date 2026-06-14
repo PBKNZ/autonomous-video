@@ -990,25 +990,25 @@
     modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
     // Showreel video
-    const vid = document.getElementById('showreelVideo');
+    const reelVid = document.getElementById('showreelVideo');
     const overlay = document.getElementById('reelOverlay');
     const poster = document.getElementById('showreelPoster');
-    if (vid && overlay) {
+    if (reelVid && overlay) {
       overlay.addEventListener('click', () => {
-        vid.style.opacity = '1';
+        reelVid.style.opacity = '1';
         if (poster) poster.style.opacity = '0';
-        vid.play();
+        reelVid.play();
         overlay.style.opacity = '0';
         overlay.style.pointerEvents = 'none';
       });
-      vid.addEventListener('click', () => {
-        if (!vid.paused) {
-          vid.pause();
+      reelVid.addEventListener('click', () => {
+        if (!reelVid.paused) {
+          reelVid.pause();
           overlay.style.opacity = '1';
           overlay.style.pointerEvents = 'auto';
         }
       });
-      vid.addEventListener('ended', () => {
+      reelVid.addEventListener('ended', () => {
         overlay.style.opacity = '1';
         overlay.style.pointerEvents = 'auto';
       });

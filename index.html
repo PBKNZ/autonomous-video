@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Autonomous — Video Production</title>
+<title>Autonomous — Mighty Fine Production &amp; Creative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -91,6 +91,12 @@ nav.scrolled { background: rgba(7,7,10,0.94); backdrop-filter: blur(14px); paddi
 .hero-eyebrow { font-size: 10px; letter-spacing: .4em; text-transform: uppercase; font-weight: 500; margin-bottom: 28px; opacity: 0; animation: fadeUp 1s ease .3s forwards; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(50px, 8vw, 96px); font-weight: 300; line-height: .95; color: var(--white); margin-bottom: 32px; opacity: 0; animation: fadeUp 1s ease .5s forwards; }
 .hero-title em { font-style: italic; color: var(--accent); }
+.hero-title .line-1 { display: block; white-space: nowrap; }
+.hero-title .line-2 { display: block; }
+.hero-title .bold-word { font-weight: 700; }
+@media (max-width: 480px) {
+.hero-title .line-1 { white-space: normal; }
+}
 .glow-word { background: linear-gradient(90deg, #2dd4f0, #7c5cfc, #e040fb, #ff6b2b, #2dd4f0); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 10s linear infinite; font-weight: 600; font-style: italic; }
 @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: -200% 50%; } }
 .hero-sub { font-size: 14px; color: var(--muted); max-width: 500px; margin: 0 auto 48px; opacity: 0; animation: fadeUp 1s ease .7s forwards; }
@@ -330,9 +336,9 @@ footer { padding: 30px 24px; flex-direction: column; gap: 20px; text-align: cent
 <div class="hero-spotlight" id="heroSpotlight"></div>
 <div class="hero-bg-overlay"></div>
 <div class="hero-content">
-<p class="hero-eyebrow">Creative Production &amp; Post-Production Studio</p>
-<h1 class="hero-title">From brief<br>to <span class="glow-word">final cut.</span><br>Crafted properly.</h1>
-<p class="hero-sub">We partner with agencies, brands and marketing teams to create campaign-ready films, social cutdowns, motion assets and polished post-production. Without the production stress.</p>
+<p class="hero-eyebrow">Creative Direction. Commercial Direction. Production. Post.</p>
+<h1 class="hero-title"><span class="line-1">Mighty fine <span class="bold-word">production</span></span><span class="line-2">&amp; <span class="bold-word">creative.</span></span><span class="glow-word">Done proper.</span></h1>
+<p class="hero-sub">Two mates. One Creative Director, one Design Director. Decades of big-brand experience (minus the massive egos). We partner with agencies, brands and marketing teams to deliver good-looking work, without the stress.</p>
 <div class="hero-actions">
 <a href="#contact" class="btn-primary">Partner With Us</a>
 <a href="#showreel" class="btn-ghost">Watch Showreel</a>
@@ -369,14 +375,14 @@ title="Autonomous showreel 2026"></iframe>
 </div>
 <div class="about-content">
 <p class="section-label reveal">About</p>
-<h2 class="section-title reveal">Two creatives.<br><em>30+ years</em> in the industry.</h2>
-<p class="section-body reveal reveal-delay-1">Patrick and Anton have spent three decades on the front line of production. Feature films, global ad campaigns, and everything in between. International brands, major agencies, and every kind of content brief imaginable.</p>
+<h2 class="section-title reveal">Two mates.<br><em>30+ years</em> in the game.</h2>
+<p class="section-body reveal reveal-delay-1">Patrick and Anton have spent three decades on the front line of production. Feature films, global ad campaigns, and everything in between. International brands, major agencies, every kind of brief you can think of.</p>
 <div class="about-stats reveal reveal-delay-2">
 <div class="stat"><div class="stat-val">30+</div><div class="stat-label">Years experience</div></div>
 <div class="stat"><div class="stat-val">Global</div><div class="stat-label">Client portfolio</div></div>
 <div class="stat"><div class="stat-val">Full</div><div class="stat-label">Service studio</div></div>
 </div>
-<p class="section-body reveal reveal-delay-3">We started Autonomous to make proper production accessible. You get the craft of a major studio at a scale that makes sense for your budget and timeline.</p>
+<p class="section-body reveal reveal-delay-3">We started Autonomous to make proper production easy to work with. Big-studio craft at a scale that actually fits your budget and timeline.</p>
 <br><br>
 <a href="#contact" class="btn-primary reveal reveal-delay-4">Work With Us</a>
 </div>
@@ -401,6 +407,30 @@ title="Autonomous showreel 2026"></iframe>
 
 <div class="work-scroll-wrap reveal">
 <div class="work-scroll" id="workScroll">
+
+<div class="work-item" data-vimeo="1202405326">
+<img class="work-thumb" src="https://vumbnail.com/1202405326.jpg" alt="New Project 1" />
+<div class="work-item-overlay"></div>
+<div class="work-play-badge">
+<svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
+</div>
+<div class="work-item-info">
+<div class="work-item-type">Latest Work</div>
+<div class="work-item-title">New Project 1</div>
+</div>
+</div>
+
+<div class="work-item" data-vimeo="1202405325">
+<img class="work-thumb" src="https://vumbnail.com/1202405325.jpg" alt="New Project 2" />
+<div class="work-item-overlay"></div>
+<div class="work-play-badge">
+<svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M1 1L11 7L1 13V1Z" stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,0.9)"/></svg>
+</div>
+<div class="work-item-info">
+<div class="work-item-type">Latest Work</div>
+<div class="work-item-title">New Project 2</div>
+</div>
+</div>
 
 <div class="work-item" data-vimeo="1194653768">
 <img class="work-thumb" src="https://vumbnail.com/1194653768.jpg" alt="Pure Blonde" />
@@ -472,7 +502,7 @@ title="Autonomous showreel 2026"></iframe>
 <div class="brands-inner">
 <div class="brands-header reveal">
 <p class="section-label">Brand Experience</p>
-<h2 class="section-title">Current collaborations and previous campaign experience across <em>brands, agencies and global teams.</em></h2>
+<h2 class="section-title">Work we've done. <em>Brands we've done it with.</em></h2>
 </div>
 
 <div class="brand-group reveal">
@@ -484,13 +514,15 @@ title="Autonomous showreel 2026"></iframe>
 <div class="logo-cell"><img src="logos/havas.png" alt="Havas" /></div>
 <div class="logo-cell"><img src="logos/gillette.png" alt="Gillette" /></div>
 <div class="logo-cell"><img src="logos/essential.png" alt="Essential Talent" /></div>
+<div class="logo-cell"><img src="logos/acesociety.png" alt="Ace Society" /></div>
+<div class="logo-cell"><img src="logos/outpaged.png" alt="Outpaged" /></div>
 </div>
 </div>
 
 <div class="brand-group reveal reveal-delay-2">
 <div class="brand-group-header">
 <p class="brand-group-title">Previous Campaign Experience</p>
-<p class="brand-group-note">Includes work completed by Patrick and Anton individually across previous roles, productions and agency collaborations.</p>
+<p class="brand-group-note">Work Patrick and Anton have done individually across past roles, productions and agency collaborations.</p>
 </div>
 <div class="logo-grid">
 <div class="logo-cell"><img src="logos/mcdonalds.png" alt="McDonald's" /></div>
@@ -510,17 +542,17 @@ title="Autonomous showreel 2026"></iframe>
 <div class="services-inner">
 <div class="services-left reveal">
 <p class="section-label">What We Do</p>
-<h2 class="section-title">Full production.<br><em>Zero compromise.</em></h2>
-<p class="section-body">Every stage of video production handled in-house. Brief to final delivery. No handoffs, no gaps. 30+ years of international production experience behind every frame.</p>
+<h2 class="section-title">Full production.<br><em>Zero stress.</em></h2>
+<p class="section-body">Every stage handled in-house. Brief to final delivery. No handoffs, no gaps. 30+ years of international experience behind every frame.</p>
 <br><br>
 <a href="#contact" class="btn-ghost">Let's Start a Conversation</a>
 </div>
 <div class="services-grid">
-<div class="service-card reveal reveal-delay-1"><div class="service-num">01</div><div class="service-name">Creative Strategy</div><div class="service-desc">Concept development, scripting and campaign direction. We turn an approved idea into a clear plan your client can sign off.</div></div>
-<div class="service-card reveal reveal-delay-2"><div class="service-num">02</div><div class="service-name">Storyboarding</div><div class="service-desc">Visual storytelling planned shot by shot. Every frame approved before cameras roll, so production stays on brief and on budget.</div></div>
+<div class="service-card reveal reveal-delay-1"><div class="service-num">01</div><div class="service-name">Creative Direction</div><div class="service-desc">Concept development, scripting, pitch docs and campaign direction. Content strategy paired with the latest tech, so you can offer your clients more.</div></div>
+<div class="service-card reveal reveal-delay-2"><div class="service-num">02</div><div class="service-name">Commercial Direction</div><div class="service-desc">Over a decade of international commercial directing experience. Major productions to run-and-gun shoots. Studio set-ups to live stunts. VR to AI.</div></div>
 <div class="service-card reveal reveal-delay-3"><div class="service-num">03</div><div class="service-name">Production</div><div class="service-desc">Full-service shoot management. Crew, talent, locations, direction and cinematography handled end to end.</div></div>
 <div class="service-card reveal reveal-delay-4"><div class="service-num">04</div><div class="service-name">Post Production</div><div class="service-desc">Editing, colour, sound, motion, captions, resizes and platform-ready exports. Ready to launch across web, social, paid and broadcast.</div></div>
-<div class="service-card reveal reveal-delay-2"><div class="service-num">05</div><div class="service-name">Animation &amp; Motion</div><div class="service-desc">2D and 3D animation, character work, title sequences and brand-aligned motion graphics that elevate any campaign.</div></div>
+<div class="service-card reveal reveal-delay-2"><div class="service-num">05</div><div class="service-name">3D &amp; Motion</div><div class="service-desc">A whole lotta banging 3D. 2D and motion design, character work, title sequences and brand-aligned graphics that lift any campaign.</div></div>
 <div class="service-card reveal reveal-delay-3"><div class="service-num">06</div><div class="service-name">Campaign Rollout</div><div class="service-desc">Hero films, 30s/15s/6s cutdowns, vertical assets, versioning and final delivery for every platform you need to hit.</div></div>
 </div>
 </div>
@@ -532,8 +564,8 @@ title="Autonomous showreel 2026"></iframe>
 <div class="agencies-header reveal">
 <p class="section-label">For Agencies</p>
 <h2 class="section-title">Built to scale<br>around <em>the brief.</em></h2>
-<p class="section-body" style="max-width:720px;">We support creative, digital, social and brand agencies as a flexible production and post-production partner, bringing senior production thinking, specialist post and campaign rollout support when your team needs extra hands.</p>
-<p class="section-body" style="max-width:720px;margin-top:18px;">Lean when the job is simple. Expanded when the brief needs more. Always senior, considered and crafted properly.</p>
+<p class="section-body" style="max-width:720px;">Trusted hands for creative, digital, social and brand agencies. We bring senior production thinking, specialist post and campaign rollout support when your team needs extra hands.</p>
+<p class="section-body" style="max-width:720px;margin-top:18px;">Lean when the job's simple. Scale up when the brief needs more. Always senior. Always considered. Always done proper.</p>
 </div>
 <div class="agency-cards">
 <div class="agency-card reveal reveal-delay-1">
@@ -545,7 +577,7 @@ title="Autonomous showreel 2026"></iframe>
 </svg>
 </div>
 <div class="agency-card-title">Production Support</div>
-<div class="agency-card-desc">Shoot planning, crew, talent, locations, direction and on-set production.</div>
+<div class="agency-card-desc">Shoot planning, crew, talent, locations, direction and on-set production. We can run it end to end.</div>
 </div>
 <div class="agency-card reveal reveal-delay-2">
 <div class="agency-icon">
@@ -558,7 +590,7 @@ title="Autonomous showreel 2026"></iframe>
 </svg>
 </div>
 <div class="agency-card-title">Post-Production</div>
-<div class="agency-card-desc">Editing, colour, sound, motion, captions, resizes, versioning and final delivery.</div>
+<div class="agency-card-desc">Edit, colour, sound, motion, captions, resizes, versioning and final delivery. Fix it in post, or knock the post out of the park.</div>
 </div>
 <div class="agency-card reveal reveal-delay-3">
 <div class="agency-icon">
@@ -571,7 +603,7 @@ title="Autonomous showreel 2026"></iframe>
 </svg>
 </div>
 <div class="agency-card-title">Campaign Rollout</div>
-<div class="agency-card-desc">Hero films, cutdowns, vertical assets, case study films, pitch films and platform-ready exports.</div>
+<div class="agency-card-desc">Hero films, cutdowns, vertical assets, case studies, pitch films and platform-ready exports.</div>
 </div>
 <div class="agency-card reveal reveal-delay-4">
 <div class="agency-icon">
@@ -582,8 +614,8 @@ title="Autonomous showreel 2026"></iframe>
 <path d="M5 28c0-3.5 3.5-6 8-6s8 2.5 8 6M16 28c0-3.5 3.5-6 8-6s8 2.5 8 6" stroke="url(#g4)" stroke-width="1.4" stroke-linecap="round"/>
 </svg>
 </div>
-<div class="agency-card-title">Agency-Friendly</div>
-<div class="agency-card-desc">Fast, organised and discreet. Easy to plug into your process, support your producers, or work white-label behind the scenes.</div>
+<div class="agency-card-title">Easy To Work With</div>
+<div class="agency-card-desc">Fast, organised, no egos. Plug straight into your process, support your producers, or work white-label behind the scenes.</div>
 </div>
 </div>
 
@@ -592,13 +624,14 @@ title="Autonomous showreel 2026"></iframe>
 <h2 class="section-title">If any of this <em>sounds familiar.</em></h2>
 </div>
 <div class="when-list">
-<div class="when-item reveal reveal-delay-1">Your team is at capacity.</div>
-<div class="when-item reveal reveal-delay-1">The idea is approved, but production needs to move.</div>
-<div class="when-item reveal reveal-delay-2">You need fast cutdowns or platform-ready campaign assets.</div>
-<div class="when-item reveal reveal-delay-2">You need polished post without managing multiple suppliers.</div>
-<div class="when-item reveal reveal-delay-3">You need a pitch film, case study film or campaign explainer.</div>
-<div class="when-item reveal reveal-delay-3">The client needs high-quality output, but the budget needs to stay lean.</div>
-<div class="when-item reveal reveal-delay-4">You want a trusted production partner who can scale up or down around the job.</div>
+<div class="when-item reveal reveal-delay-1">You need some good ideas. Preferably fast.</div>
+<div class="when-item reveal reveal-delay-1">You need to write a pitch. A good one. A real good one.</div>
+<div class="when-item reveal reveal-delay-2">You want to know if it's possible to do in 3D. (It probably is.)</div>
+<div class="when-item reveal reveal-delay-2">Your team's slammed and you need trusted hands to run a project end to end.</div>
+<div class="when-item reveal reveal-delay-3">You need to fix it in post. Or knock the post out of the park.</div>
+<div class="when-item reveal reveal-delay-3">You've got a big job. We scale with you.</div>
+<div class="when-item reveal reveal-delay-4">You want to use AI, but you actually want it to be good. We've been all over it for ages.</div>
+<div class="when-item reveal reveal-delay-4">You want to work with people who are easy, chill and all-round mint to work with.</div>
 </div>
 <div class="when-cta reveal">
 <a href="#contact" class="btn-primary">Book an Agency Intro</a>
@@ -623,8 +656,8 @@ referrerpolicy="strict-origin-when-cross-origin"></iframe>
 <section class="contact" id="contact">
 <div class="contact-inner">
 <p class="section-label reveal">Get In Touch</p>
-<h2 class="section-title reveal">Let's start a <em>conversation.</em></h2>
-<p class="section-body reveal reveal-delay-1">Tell us about your project, campaign or agency partnership need. We'll come back within 24 hours with a clear path forward.</p>
+<h2 class="section-title reveal">Let's have <em>a yarn.</em></h2>
+<p class="section-body reveal reveal-delay-1">Tell us about your project, campaign or agency partnership. We'll come back within 24 hours with a clear path forward.</p>
 <form class="contact-form reveal reveal-delay-2" onsubmit="handleSubmit(event)">
 <div class="form-group"><label for="fname">Your Name</label><input type="text" id="fname" placeholder="Full name" required /></div>
 <div class="form-group"><label for="company">Company / Agency</label><input type="text" id="company" placeholder="Company or agency" /></div>
@@ -641,10 +674,10 @@ referrerpolicy="strict-origin-when-cross-origin"></iframe>
 <option>Retainer / Ongoing Content</option>
 <option>Other</option>
 </select></div>
-<div class="form-group full"><label for="brief">Brief</label><textarea id="brief" placeholder="Tell us about your project, timeline, deliverables and any context we should know..." required></textarea></div>
-<div class="form-submit"><button type="submit" class="btn-primary" style="cursor:none;">Start the Conversation</button></div>
+<div class="form-group full"><label for="brief">Brief</label><textarea id="brief" placeholder="Tell us about your project, timeline, deliverables and anything else we should know..." required></textarea></div>
+<div class="form-submit"><button type="submit" class="btn-primary" style="cursor:none;">Send It Through</button></div>
 </form>
-<div id="formSuccess" style="display:none;padding:22px;border:1px solid rgba(45,212,240,.25);color:var(--neon-blue);font-size:13px;letter-spacing:.1em;margin-top:16px;">Brief received. We'll be in touch within 24 hours.</div>
+<div id="formSuccess" style="display:none;padding:22px;border:1px solid rgba(45,212,240,.25);color:var(--neon-blue);font-size:13px;letter-spacing:.1em;margin-top:16px;">Cheers. We'll be in touch within 24 hours.</div>
 <p class="contact-email reveal">Or reach out directly</p>
 <div class="contact-people reveal">
 <div class="contact-person">
